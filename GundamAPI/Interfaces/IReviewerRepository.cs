@@ -1,6 +1,12 @@
-﻿namespace GundamAPI.Interfaces
+﻿using GundamAPI.Models;
+
+namespace GundamAPI.Interfaces
 {
-	public class IReviewerRepository
+	public interface IReviewerRepository
 	{
+		public ICollection<Reviewer> GetReviewers();
+		Reviewer GetReviewer(int reviewerId);
+		ICollection<Review> GetReviewsByReviewer(int reviewerId);
+		bool ReviewerExists(int reviewerId);
 	}
 }

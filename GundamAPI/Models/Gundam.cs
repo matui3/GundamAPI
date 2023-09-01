@@ -4,7 +4,6 @@
 	{
 		public int Id { get; set; }
 		public string Model { get; set; }
-		public string Name { get; set; }
 		public Pilot pilot { get; set; }
 		public Faction Faction { get; set; }
 		public Show show { get; set; }
