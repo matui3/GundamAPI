@@ -6,6 +6,8 @@ namespace GundamAPI.Interfaces
 	{
 		public ICollection<Armaments> GetArmaments();
 		Armaments GetArmament(int id);
+
+		ICollection<Gundam> GetGundamByArmaments(int armamentId);
 		
 		bool ArmamentExists(int id);
 	}

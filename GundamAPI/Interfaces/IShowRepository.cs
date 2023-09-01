@@ -8,5 +8,6 @@ namespace GundamAPI.Interfaces
 		Show GetShow(int id);
 		ICollection<Gundam> GetGundamsByShow(int showId);
 		ICollection<Pilot> GetPilotsByShow(int showId);
+		bool ShowExists(int id);
 	}
 }
