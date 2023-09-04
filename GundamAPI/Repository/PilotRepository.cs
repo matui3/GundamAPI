@@ -1,33 +1,39 @@
-﻿using GundamAPI.Interfaces;
+﻿using GundamAPI.Data;
+using GundamAPI.Interfaces;
 using GundamAPI.Models;
 
 namespace GundamAPI.Repository
 {
 	public class PilotRepository : IPilotRepository
 	{
-		public ICollection<Gundam> GetGundamByPilot(int pilotId)
+		private DataContext _context;
+        public PilotRepository(DataContext context)
+        {
+            _context = context;
+        }
+        public Gundam GetGundamOfAPilot(int pilotId)
 		{
-			throw new NotImplementedException();
+			return _context.Pilots.Where(p => p.Id == pilotId).Select(g => g.Gundam).FirstOrDefault();
 		}
 
 		public Pilot GetPilot(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Pilots.Where(p => p.Id == id).FirstOrDefault();
 		}
 
-		public ICollection<Pilot> GetPilotByGundam(int gundamId)
+		public Pilot GetPilotByGundam(int gundamId)
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.Where(g => g.Id == gundamId).Select(p => p.Pilot).FirstOrDefault();
 		}
 
 		public ICollection<Pilot> GetPilots()
 		{
-			throw new NotImplementedException();
+			return _context.Pilots.ToList();
 		}
 
 		public bool PilotExists(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Pilots.Any(p => p.Id == id);
 		}
 	}
 }

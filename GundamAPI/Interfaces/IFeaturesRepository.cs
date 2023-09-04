@@ -4,9 +4,9 @@ namespace GundamAPI.Interfaces
 {
 	public interface IFeaturesRepository
 	{
-		public ICollection<Features> GetFeatures();
-		Features GetFeature(int id);
-		ICollection<Gundam> GetGundamByFeatures(int featureId);
+		public ICollection<Feature> GetFeatures();
+		Feature GetFeature(int id);
+		ICollection<Gundam> GetGundamsByFeatures(int featureId);
 		bool FeaturesExists(int id);
 	}
 }

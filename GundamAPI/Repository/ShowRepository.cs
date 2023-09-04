@@ -1,33 +1,39 @@
-﻿using GundamAPI.Interfaces;
+﻿using GundamAPI.Data;
+using GundamAPI.Interfaces;
 using GundamAPI.Models;
 
 namespace GundamAPI.Repository
 {
 	public class ShowRepository : IShowRepository
 	{
-		public ICollection<Gundam> GetGundamsByShow(int showId)
+		private DataContext _context;
+        public ShowRepository(DataContext context)
+        {
+			_context = context;
+        }
+        public ICollection<Gundam> GetGundamsByShow(int showId)
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.Where(g => g.Show.Id == showId).ToList();
 		}
 
 		public ICollection<Pilot> GetPilotsByShow(int showId)
 		{
-			throw new NotImplementedException();
+			return _context.Pilots.Where(p => p.Show.Id == showId).ToList();
 		}
 
 		public Show GetShow(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Shows.Where(s => s.Id == id).FirstOrDefault();
 		}
 
 		public ICollection<Show> GetShows()
 		{
-			throw new NotImplementedException();
+			return _context.Shows.ToList();
 		}
 
 		public bool ShowExists(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Shows.Any(s => s.Id == id);
 		}
 	}
 }

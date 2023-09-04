@@ -9,14 +9,14 @@ namespace GundamAPI.Data
 
 		public DbSet<Armaments> Armaments { get; set; }
 		public DbSet<Faction> Factions { get; set; }
-		public DbSet<Features> Features { get; set; }
+		public DbSet<Feature> Features { get; set; }
 		public DbSet<Gundam> Gundams { get; set; }
 		public DbSet<Pilot> Pilots { get; set; }
 		public DbSet<Review> Reviews { get; set; }
 		public DbSet<Reviewer> Reviewers { get; set; }
 		public DbSet<Show> Shows { get; set; }
 		public DbSet<GundamArmament> GundamArmaments { get; set; }
-		public DbSet<GundamFeatures> GundamFeatures { get; set; }
+		public DbSet<GundamFeature> GundamFeatures { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -29,13 +29,13 @@ namespace GundamAPI.Data
 				.HasOne(a => a.Armaments).WithMany(ga => ga.GundamArmaments)
 				.HasForeignKey(g => g.GundamId);
 		
-			modelBuilder.Entity<GundamFeatures>()
+			modelBuilder.Entity<GundamFeature>()
 				.HasKey(gf => new { gf.GundamId, gf.FeatureId });
-			modelBuilder.Entity<GundamFeatures>()
+			modelBuilder.Entity<GundamFeature>()
 				.HasOne(g => g.Gundam).WithMany(gf => gf.GundamFeatures)
 				.HasForeignKey(f => f.FeatureId);
-			modelBuilder.Entity<GundamFeatures>()
-				.HasOne(f => f.Features).WithMany(gf => gf.GundamFeatures)
+			modelBuilder.Entity<GundamFeature>()
+				.HasOne(f => f.Feature).WithMany(gf => gf.GundamFeatures)
 				.HasForeignKey(g => g.GundamId);
 		}
 	}
