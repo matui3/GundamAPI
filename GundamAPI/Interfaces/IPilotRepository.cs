@@ -8,7 +8,6 @@ namespace GundamAPI.Interfaces
 		Pilot GetPilot(int id);
 		ICollection<Gundam> GetGundamByPilot(int pilotId);
 		ICollection<Pilot> GetPilotByGundam(int gundamId);
-		ICollection<Faction> GetFactionByPilot(int pilotId);
 		bool PilotExists(int id);
 
 	}

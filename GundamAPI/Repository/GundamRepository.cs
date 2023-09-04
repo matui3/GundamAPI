@@ -13,22 +13,22 @@ namespace GundamAPI.Repository
         }
         public Gundam GetGundam(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.Where(g => g.Id == id).FirstOrDefault();
 		}
 
 		public Gundam GetGundam(string model)
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.Where(g => g.Model == model).FirstOrDefault();
 		}
 
 		public ICollection<Gundam> GetGundams()
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.OrderBy(g => g.Id).ToList();
 		}
 
 		public bool GundamExists(int gundamId)
 		{
-			throw new NotImplementedException();
+			return _context.Gundams.Any(g => g.Id == gundamId);
 		}
 	}
 }
