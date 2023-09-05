@@ -4,8 +4,8 @@ namespace GundamAPI.Interfaces
 {
 	public interface IArmamentRepository
 	{
-		public ICollection<Armaments> GetArmaments();
-		Armaments GetArmament(int id);
+		public ICollection<Armament> GetArmaments();
+		Armament GetArmament(int id);
 
 		ICollection<Gundam> GetGundamsByArmaments(int armamentId);
 		

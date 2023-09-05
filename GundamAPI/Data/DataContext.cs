@@ -7,7 +7,7 @@ namespace GundamAPI.Data
 	{
 		public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-		public DbSet<Armaments> Armaments { get; set; }
+		public DbSet<Armament> Armaments { get; set; }
 		public DbSet<Faction> Factions { get; set; }
 		public DbSet<Feature> Features { get; set; }
 		public DbSet<Gundam> Gundams { get; set; }
@@ -37,6 +37,61 @@ namespace GundamAPI.Data
 			modelBuilder.Entity<GundamFeature>()
 				.HasOne(f => f.Feature).WithMany(gf => gf.GundamFeatures)
 				.HasForeignKey(g => g.GundamId);
+
+			modelBuilder.Entity<Gundam>()
+				.HasOne(g => g.Pilot)
+				.WithOne(p => p.Gundam)
+				.HasForeignKey<Pilot>(p => p.GundamId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			modelBuilder.Entity<Gundam>()
+				.HasMany(g => g.Reviews)
+				.WithOne(p => p.Gundam)
+				.HasForeignKey(g => g.GundamId);
+
+			modelBuilder.Entity<Show>()
+				.HasMany(s => s.Gundams)
+				.WithOne(s => s.Show)
+				.HasForeignKey(s => s.ShowId);
+
+			modelBuilder.Entity<Show>()
+				.HasMany(s => s.Pilots)
+				.WithOne(s => s.Show)
+				.HasForeignKey(s => s.ShowId);
+
+			modelBuilder.Entity<Pilot>()
+				.HasOne(p => p.Gundam)
+				.WithOne(g => g.Pilot)
+				.IsRequired(false);
+
+			modelBuilder.Entity<Pilot>()
+				.HasOne(p => p.Faction)
+				.WithMany(f => f.Pilots)
+				.HasForeignKey(p => p.FactionId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			modelBuilder.Entity<Pilot>()
+				.HasOne(p => p.Show)
+				.WithMany(s => s.Pilots)
+				.HasForeignKey(p => p.ShowId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			modelBuilder.Entity<Faction>()
+				.HasMany(f => f.Gundams)
+				.WithOne(g => g.Faction)
+				.HasForeignKey(g => g.FactionId);
+
+			modelBuilder.Entity<Faction>()
+				.HasMany(f => f.Pilots)
+				.WithOne(g => g.Faction)
+				.HasForeignKey(g => g.FactionId);
+
+			modelBuilder.Entity<Reviewer>()
+				.HasMany(r => r.Reviews)
+				.WithOne(r => r.Reviewer)
+				.HasForeignKey(r => r.ReviewerId)
+				.OnDelete(DeleteBehavior.Restrict);
+			
 		}
 	}
 }

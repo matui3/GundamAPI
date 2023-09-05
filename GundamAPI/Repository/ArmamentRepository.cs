@@ -12,12 +12,12 @@ namespace GundamAPI.Repository
         {
 			_context = context;    
         }
-        public Armaments GetArmament(int id)
+        public Armament GetArmament(int id)
 		{
 			return _context.Armaments.Where(a => a.Id == id).FirstOrDefault();
 		}
 
-		public ICollection<Armaments> GetArmaments()
+		public ICollection<Armament> GetArmaments()
 		{
 			return _context.Armaments.ToList();
 		}

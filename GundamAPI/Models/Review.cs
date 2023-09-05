@@ -7,6 +7,8 @@
 		public string Text { get; set; }
 
 		public int ReviewerId { get; set; }
+		public Reviewer Reviewer { get; set; }
 		public int GundamId { get; set; }
+		public Gundam Gundam { get; set; }
 	}
 }

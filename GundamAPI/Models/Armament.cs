@@ -1,6 +1,6 @@
 ﻿namespace GundamAPI.Models
 {
-	public class Armaments
+	public class Armament
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
