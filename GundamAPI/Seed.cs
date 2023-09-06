@@ -37,7 +37,7 @@ namespace GundamAPI
                 var showB = context.Shows.FirstOrDefault(s => s.Id == 2);
 
                 context.Pilots.AddRange(
-                    new Pilot { Name = "Pilot 1", FactionId = factionA.Id, Faction = factionA, ShowId = showA.Id, Show = showA, },
+                    new Pilot { Name = "Pilot 1", FactionId = factionA.Id, Faction = factionA, ShowId = showA.Id, Show = showA },
                     new Pilot { Name = "Pilot 2", FactionId = factionB.Id, Faction = factionB, ShowId = showB.Id, Show = showB });
                 context.SaveChanges();
             }
@@ -56,6 +56,7 @@ namespace GundamAPI
 				context.Gundams.AddRange(
 					new Gundam { Model = "Gundam Model 1", FactionId = factionA.Id, Faction = factionA, ShowId = showA.Id, Show = showA, PilotId = pilotA.Id, Pilot = pilotA },
 					new Gundam { Model = "Gundam Model 2", FactionId = factionB.Id, Faction = factionB, ShowId = showB.Id, Show = showB, PilotId = pilotB.Id, Pilot = pilotB });
+				context.SaveChanges();
 			}
 
 			if (!context.Armaments.Any())
@@ -68,6 +69,7 @@ namespace GundamAPI
 					new Armament { Name = "Armament 2", Description = "Armament Description 2" },
 					new Armament { Name = "Armament 3", Description = "Armament Description 3" },
 					new Armament { Name = "Armament 4", Description = "Armament Description 4" });
+				context.SaveChanges();
 
 				var armamentA = context.Armaments.FirstOrDefault(a => a.Id == 1);
 				var armamentB = context.Armaments.FirstOrDefault(a => a.Id == 2);
@@ -91,6 +93,7 @@ namespace GundamAPI
 					new Feature { Name = "Feature 2", Description = "Feature Description 2" },
 					new Feature { Name = "Feature 3", Description = "Feature Description 3" },
 					new Feature { Name = "Feature 4", Description = "Feature Description 4" });
+				context.SaveChanges();
 
 				var featureA = context.Features.FirstOrDefault(a => a.Id == 1);
 				var featureB = context.Features.FirstOrDefault(a => a.Id == 2);
@@ -111,8 +114,6 @@ namespace GundamAPI
                     new Reviewer { Name = "Reviewer 2" });
                 context.SaveChanges();
             }
-
-			
 
 			if (!context.Reviews.Any())
             {

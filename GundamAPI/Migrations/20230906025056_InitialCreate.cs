@@ -211,7 +211,7 @@ namespace GundamAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GundamId = table.Column<int>(type: "int", nullable: false),
+                    GundamId = table.Column<int>(type: "int", nullable: true),
                     ShowId = table.Column<int>(type: "int", nullable: false),
                     FactionId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -305,7 +305,8 @@ namespace GundamAPI.Migrations
                 name: "IX_Pilots_GundamId",
                 table: "Pilots",
                 column: "GundamId",
-                unique: true);
+                unique: true,
+                filter: "[GundamId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pilots_ShowId",

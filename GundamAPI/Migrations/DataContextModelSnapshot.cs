@@ -182,7 +182,7 @@ namespace GundamAPI.Migrations
                     b.Property<int>("FactionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GundamId")
+                    b.Property<int?>("GundamId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -197,7 +197,8 @@ namespace GundamAPI.Migrations
                     b.HasIndex("FactionId");
 
                     b.HasIndex("GundamId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[GundamId] IS NOT NULL");
 
                     b.HasIndex("ShowId");
 
