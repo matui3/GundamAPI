@@ -31,5 +31,43 @@ namespace GundamAPI.Controllers
 
 			return Ok(armaments);
 		}
+
+		[HttpGet("{armamentId}")]
+		[ProducesResponseType(200, Type = typeof(Armament))]
+		[ProducesResponseType(400)]
+		public IActionResult GetArmament(int armamentId)
+		{
+			if (!_armamentRepository.ArmamentExists(armamentId))
+			{
+				return NotFound();
+			}
+
+			var armaments = _mapper.Map<ArmamentDto>(_armamentRepository.GetArmament(armamentId));
+			
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			return Ok(armaments);
+		}
+
+		[HttpGet("gundams/{arammentId}")]
+		[ProducesResponseType(200, Type = typeof(IEnumerable<Gundam>))]
+		[ProducesResponseType(400)]
+		public IActionResult GetGundamByArmamentId(int armamentId)
+		{
+			var gundams = _mapper.Map<List<GundamDto>>(_armamentRepository.GetGundamsByArmaments(armamentId));
+
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			return Ok(gundams);
+		}
+
+		
+
     }
 }
