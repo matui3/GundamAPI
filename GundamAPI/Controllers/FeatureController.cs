@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GundamAPI.Controllers
 {
+	[Route("api/[controller]")]
+	[ApiController]
 	public class FeatureController : Controller
 	{
 		private readonly IFeaturesRepository _featuresRepository;

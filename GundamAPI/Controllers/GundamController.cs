@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GundamAPI.Controllers
 {
+	[Route("api/[controller]")]
+	[ApiController]
 	public class GundamController : Controller
 	{
 		private readonly IGundamRepository _gundamRepository;
@@ -31,7 +33,7 @@ namespace GundamAPI.Controllers
 		}
 
 		[HttpGet("{gundamId}")]
-		[ProducesResponseType(200, Type = typeof(IEnumerable<Gundam>))]
+		[ProducesResponseType(200, Type = typeof(Gundam))]
 		[ProducesResponseType(400)]
 		public IActionResult GetGundam(int gundamId) // must return an action result
 		{

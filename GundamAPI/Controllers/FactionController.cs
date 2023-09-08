@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GundamAPI.Controllers
 {
+	[Route("api/[controller]")]
+	[ApiController]
 	public class FactionController : Controller
 	{
 		private readonly IFactionRepository _factionRepository;
