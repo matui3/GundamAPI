@@ -52,7 +52,7 @@ namespace GundamAPI.Controllers
 			return Ok(armaments);
 		}
 
-		[HttpGet("gundams/{arammentId}")]
+		[HttpGet("gundams/{armamentId}")]
 		[ProducesResponseType(200, Type = typeof(IEnumerable<Gundam>))]
 		[ProducesResponseType(400)]
 		public IActionResult GetGundamByArmamentId(int armamentId)

@@ -64,5 +64,27 @@ namespace GundamAPI.Tests.Controllers
 			result.Should().NotBeNull();
 			result.Should().BeOfType(typeof(OkObjectResult));
 		}
+
+		[Fact]
+		public void ArmamentController_GetGundamByArmaments_ReturnsOk()
+		{
+			var armamentId = 1;
+			var gundams = new List<Gundam>();
+			var gundamDtos = new List<GundamDto>();
+
+			// Fake repository
+			A.CallTo(() => _armamentRepository.GetGundamsByArmaments(armamentId)).WithAnyArguments().Returns(gundams);
+
+			A.CallTo(() => _mapper.Map<List<GundamDto>>(gundams)).Returns(gundamDtos);
+
+			var controller = new ArmamentController(_armamentRepository, _mapper);
+
+			// Act
+			var result = controller.GetGundamByArmamentId(armamentId);
+
+			// Assert
+			result.Should().NotBeNull();
+			result.Should().BeOfType(typeof(OkObjectResult));
+		}
 	}
 }
