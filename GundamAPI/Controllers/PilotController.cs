@@ -54,9 +54,9 @@ namespace GundamAPI.Controllers
 		[HttpGet("gundam/{gundamId}")]
 		[ProducesResponseType(200, Type = typeof(Gundam))]
 		[ProducesResponseType(400)]
-		public IActionResult GetPilotByGundam(int pilotId)
+		public IActionResult GetPilotByGundam(int gundamId)
 		{
-			var gundam = _mapper.Map<GundamDto>(_pilotRepository.GetGundamOfAPilot(pilotId));
+			var gundam = _mapper.Map<GundamDto>(_pilotRepository.GetGundamOfAPilot(gundamId));
 
 			if (!ModelState.IsValid)
 			{

@@ -68,7 +68,7 @@ namespace GundamAPI.Controllers
 		}
 
 		[HttpGet("{factionId}/pilots")]
-		public IActionResult GetPilotFromAFaction(int factionId)
+		public IActionResult GetPilotsFromAFaction(int factionId)
 		{
 			if (!_factionRepository.FactionExists(factionId))
 			{

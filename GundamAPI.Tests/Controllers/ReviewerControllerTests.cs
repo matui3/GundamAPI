@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GundamAPI.Tests.Controllers
 {
-	internal class ReviewerControllerTests
+	public class ReviewerControllerTests
 	{
 	}
 }
