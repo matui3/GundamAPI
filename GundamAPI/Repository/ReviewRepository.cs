@@ -23,7 +23,7 @@ namespace GundamAPI.Repository
 
 		public ICollection<Review> GetReviewsOfAGundam(int gundamId)
 		{
-			return _context.Reviews.Where(r => r.Gundam.Id == gundamId).ToList();		
+			return _context.Reviews.Where(r => r.GundamId == gundamId).ToList();		
 		}
 
 		public bool ReviewExists(int id)

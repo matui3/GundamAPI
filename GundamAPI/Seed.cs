@@ -59,6 +59,28 @@ namespace GundamAPI
 				context.SaveChanges();
 			}
 
+			if (!context.Reviewers.Any())
+			{
+				context.Reviewers.AddRange(
+					new Reviewer { Name = "Reviewer 1" },
+					new Reviewer { Name = "Reviewer 2" });
+				context.SaveChanges();
+			}
+
+			if (!context.Reviews.Any())
+			{
+				var reviewerA = context.Reviewers.FirstOrDefault(r => r.Id == 1);
+				var reviewerB = context.Reviewers.FirstOrDefault(r => r.Id == 2);
+
+				var gundamA = context.Gundams.FirstOrDefault(g => g.Id == 1);
+				var gundamB = context.Gundams.FirstOrDefault(g => g.Id == 2);
+
+				context.Reviews.AddRange(
+					new Review { Title = "Review 1", Text = "Good", ReviewerId = reviewerA.Id, Reviewer = reviewerA, GundamId = gundamA.Id, Gundam = gundamA },
+					new Review { Title = "Review 2", Text = "Good", ReviewerId = reviewerB.Id, Reviewer = reviewerB, GundamId = gundamA.Id, Gundam = gundamB });
+				context.SaveChanges();
+			}
+
 			if (!context.Armaments.Any())
 			{
 				var gundamA = context.Gundams.FirstOrDefault(g => g.Id == 1);
@@ -107,27 +129,7 @@ namespace GundamAPI
 				gundamB.GundamFeatures.Add(new GundamFeature { FeatureId = 4, Feature = featureD });
 			}
 
-			if (!context.Reviewers.Any())
-            {
-                context.Reviewers.AddRange(
-                    new Reviewer { Name = "Reviewer 1" },
-                    new Reviewer { Name = "Reviewer 2" });
-                context.SaveChanges();
-            }
-
-			if (!context.Reviews.Any())
-            {
-                var reviewerA = context.Reviewers.FirstOrDefault(r => r.Id == 1);
-                var reviewerB = context.Reviewers.FirstOrDefault(r => r.Id == 2);
-
-                var gundamA = context.Gundams.FirstOrDefault(g => g.Id == 1);
-                var gundamB = context.Gundams.FirstOrDefault(g => g.Id == 2);
-
-                context.Reviews.AddRange(
-                    new Review { Title = "Review 1", Text = "Good", ReviewerId = reviewerA.Id, Reviewer = reviewerA, GundamId = gundamA.Id, Gundam = gundamA },
-                    new Review { Title = "Review 2", Text = "Good", ReviewerId = reviewerB.Id, Reviewer = reviewerB, GundamId = gundamA.Id, Gundam = gundamB });
-                context.SaveChanges();
-            }
+			
 
            
 

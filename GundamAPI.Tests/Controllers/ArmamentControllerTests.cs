@@ -52,7 +52,7 @@ namespace GundamAPI.Tests.Controllers
 			var controller = new ArmamentController(_armamentRepository, _mapper);
 
 			// Act
-			var result = controller.GetArmament(1); // Replace with the desired Armament ID
+			var result = controller.GetArmament(armamentId); // Replace with the desired Armament ID
 
 			// Assert
 			result.Should().NotBeNull();

@@ -2,7 +2,6 @@
 using GundamAPI.Dto;
 using GundamAPI.Interfaces;
 using GundamAPI.Models;
-using GundamAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GundamAPI.Controllers
@@ -52,7 +51,7 @@ namespace GundamAPI.Controllers
 			return Ok(review);
 		}
 
-		[HttpGet("gundams/{gundamId}")]
+		[HttpGet("gundam/{gundamId}")]
 		[ProducesResponseType(200, Type = typeof(Review))]
 		[ProducesResponseType(400)]
 		public IActionResult GetReviewsForAGundam(int gundamId)

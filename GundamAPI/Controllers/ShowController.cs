@@ -2,7 +2,6 @@
 using GundamAPI.Dto;
 using GundamAPI.Interfaces;
 using GundamAPI.Models;
-using GundamAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GundamAPI.Controllers
@@ -50,5 +49,6 @@ namespace GundamAPI.Controllers
 			}
 			return Ok(show);
 		}
+
 	}
 }

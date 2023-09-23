@@ -20,7 +20,7 @@ namespace GundamAPI.Controllers
 
 		[HttpGet]
 		[ProducesResponseType(200, Type = typeof(IEnumerable<Reviewer>))]
-		public IActionResult GetReviews()
+		public IActionResult GetReviewers()
 		{
 			var reviewers = _mapper.Map<List<ReviewerDto>>(_reviewerRepository.GetReviewers());
 			if (!ModelState.IsValid)

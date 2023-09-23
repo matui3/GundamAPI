@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GundamAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230906025056_InitialCreate")]
+    [Migration("20230923210127_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -185,7 +185,7 @@ namespace GundamAPI.Migrations
                     b.Property<int>("FactionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GundamId")
+                    b.Property<int>("GundamId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -200,8 +200,7 @@ namespace GundamAPI.Migrations
                     b.HasIndex("FactionId");
 
                     b.HasIndex("GundamId")
-                        .IsUnique()
-                        .HasFilter("[GundamId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("ShowId");
 

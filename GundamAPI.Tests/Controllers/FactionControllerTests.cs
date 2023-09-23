@@ -53,7 +53,7 @@ namespace GundamAPI.Tests.Controllers
 			var controller = new FactionController(_factionRepository, _mapper);
 
 			// Act
-			var result = controller.GetFaction(1); // Replace with the desired Faction ID
+			var result = controller.GetFaction(factionId); // Replace with the desired Faction ID
 
 			// Assert
 			result.Should().NotBeNull();
